@@ -31,3 +31,6 @@ build/
 /journalbeat.yml
 /.GOPATH
 /bin
+
+# journalbeat stuff
+.journalbeat-pending-queue
