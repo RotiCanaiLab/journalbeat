@@ -6,7 +6,7 @@ After=syslog.target network.target remote-fs.target nss-lookup.target
 Type=simple
 EnvironmentFile=/etc/journalbeat/journalbeat.default
 WorkingDirectory=/usr/local/journalbeat
-ExecStart=/usr/local/journalbeat/bin/journalbeat -e -c ${JOURNAL_BEAT_CONFIG_FILE}
+ExecStart=/usr/local/journalbeat/bin/journalbeat -e -c ${JOURNAL_BEAT_CONFIG_FILE_PATH}
 Restart=on-failure
 
 [Install]
