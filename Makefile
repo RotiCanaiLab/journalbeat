@@ -14,10 +14,10 @@ all: make build
 
 setup_beat:
 	$Q make clean
-	$Q build_hellogopher
+	$Q make build_hellogopher
 
 build:
-	$Q setup_beat
+	$Q make setup_beat
 	$Q chmod go-w etc/journalbeat.yml
 	$Q make clean
 
