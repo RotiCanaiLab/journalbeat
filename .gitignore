@@ -34,3 +34,6 @@ build/
 
 # journalbeat stuff
 .journalbeat-pending-queue
+vendor/github.com/wadey/
+vendor/golang.org/x/tools/
+vendor/manifest
