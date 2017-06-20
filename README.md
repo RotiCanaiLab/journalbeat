@@ -67,6 +67,14 @@ OR
 
 - Modifies __etc/journalbeat.yml__ file
 
+## How to run the beat as a systemd service ?
+
+```sh
+dpkg -i <journalbeat_name>.deb
+sudo systemctl enable journalbeat.service
+sudo systemctl start journalbeat.service
+```
+
 ## How to update upstream ?
 
 ```sh
