@@ -1,9 +1,13 @@
 #
-# Journalbeat Debian Packaging Makefile
+# COTA Journalbeat Debian Packaging Makefile
 #
 
 # uncomment this for verbose
 # V := 1 # When V is set, print commands and build progress.
+
+#####################
+#		debian		#
+#####################
 
 CWD := $(shell pwd)
 
@@ -19,10 +23,12 @@ setup_beat:
 	$Q make setup_hellogopher
 	$Q make build_hellogopher
 
+# use by dh build
 build:
 	$Q make setup_beat
 	$Q chmod go-w etc/journalbeat.yml
 
+# use by dh clean
 clean:
 	$Q rm -f .DS_STORE
 	$Q rm -rf ${CWD}/bin
