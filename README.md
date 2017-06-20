@@ -1,6 +1,6 @@
 # COTA FORK
 
-This fork differs from the original upstream in two different ways. 
+This fork differs from the original upstream in three different ways. 
 
 1. new directories
 	- debian
@@ -14,30 +14,48 @@ This fork differs from the original upstream in two different ways.
 ## Requirements
 
 ```sh
-sudo apt-get install git gpg gpg-agent build-essential dh_make \
-libsystemd-dev
+sudo apt-get install git gnupg-agent build-essential libsystemd-dev
 ```
 
 and
 
+```
 Go (>=1.8.3)
+```
 
 and
 
-Goes without saying GOROOT, GOPATH environment variables and have both be callable by sudo.
+a valid __journalbeat.yml__**
+
+and
+
+Goes without saying `GOROOT`, `GOPATH` environment variables and have both be callable by sudo.
 
 ## How to use this ?
 
 ```sh
+# you need gpg-agent to sign you deb file
+# import a valid gpg public, private keys of user define in debian/control
+eval $(gpg-agent --daemon)
+gpg --import public.key
+gpg --import -allow-secret-key-import private.key
+# other stuff
 git clone <URL>/journalbeat
 cd journalbeat
 debuild
 ```
 
+## How to configure journalbeat ?
+
+- Modifies __etc/journalbeat.yml__ file
+- In etc/journalbeat.default file, modifies JOURNAL_BEAT_CONFIG_FILE_PATH
+- Modifies __etc/journalbeat.service__
+- Creates a symlink of you config file to __/etc/journalbeat/journalbeat.yml__
+
 ## How to update upstream ?
 
 ```sh
-git remote set upstream https://github.com/mheese/journalbeat
+git remote add upstream https://github.com/mheese/journalbeat
 git pull upstream
 ```
 
@@ -49,7 +67,7 @@ KEEP:
 - etc/journalbeat.service
 - .gitignore
 
-It is unlikely debian/ will conflict with any upstream changes.
+It is unlikely the debian/ directory will conflict with any upstream changes.
 
 ## How this works ?
 
