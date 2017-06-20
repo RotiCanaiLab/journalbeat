@@ -47,10 +47,21 @@ debuild
 
 ## How to configure journalbeat ?
 
-- Modifies __etc/journalbeat.yml__ file
-- In etc/journalbeat.default file, modifies JOURNAL_BEAT_CONFIG_FILE_PATH
-- Modifies __etc/journalbeat.service__
+In order of preference
+
 - Creates a symlink of you config file to __/etc/journalbeat/journalbeat.yml__
+
+OR
+
+- In etc/journalbeat.default file, modifies JOURNAL_BEAT_CONFIG_FILE_PATH
+
+OR
+
+- Modifies __etc/journalbeat.service__
+
+OR
+
+- Modifies __etc/journalbeat.yml__ file
 
 ## How to update upstream ?
 
