@@ -69,6 +69,13 @@ KEEP:
 
 It is unlikely the debian/ directory will conflict with any upstream changes.
 
+## How to remove this ?
+
+```sh
+sudo apt-get purge journalbeat -y
+rm -rf /usr/local/journalbeat
+```
+
 ## How this works ?
 
 ### Makefile
