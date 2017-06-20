@@ -8,24 +8,24 @@
 CWD := $(shell pwd)
 
 .PHONY: all
-all: build
+all: make build
+
+.PHONY: clean build setup_beat
 
 setup_beat:
-	$Q clean
+	$Q make clean
 	$Q build_hellogopher
 
 build:
 	$Q setup_beat
 	$Q chmod go-w etc/journalbeat.yml
-	$Q clean
+	$Q make clean
 
 clean:
 	$Q rm -f .DS_STORE
 	$Q rm -rf ${CWD}/bin/data
 	$Q rm -rf ${CWD}/bin/logs
-	$Q clean_hellogopher
-
-.PHONY: clean
+	$Q make clean_hellogopher
 
 
 ##################### INTERNAL ##########################
