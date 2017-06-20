@@ -1,0 +1,2 @@
+JOURNAL_BEAT_CONFIG_FILE=${HOME}/journalbeat.yml
+JOURNAL_BEAT_WORKING_DIR=/opt/journalbeat

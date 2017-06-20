@@ -1,0 +1,3 @@
+/etc/default/journalbeat
+/etc/journalbeat
+/etc/systemd/system/journalbeat.service
