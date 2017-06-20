@@ -1,0 +1,12 @@
+Source: journalbeat
+Section: admin
+Priority: optional
+Maintainer: ”jusanng” <”jusanng@cotahealthcare.com”>
+Build-Depends: debhelper (>=9), libsystemd-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/mheese/journalbeat
+
+Package: journalbeat
+Architecture: any
+Depends: libsystemd-dev
+Description: Elasticsearch beats for journalctl -f

@@ -29,3 +29,11 @@ bin/
 build/
 /Dockerfile
 /journalbeat.yml
+/.GOPATH
+/bin
+
+# journalbeat stuff
+.journalbeat-pending-queue
+vendor/github.com/wadey/
+vendor/golang.org/x/tools/
+vendor/manifest

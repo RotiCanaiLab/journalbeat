@@ -1,3 +1,162 @@
+# COTA FORK
+
+This fork differs from the original upstream in three different ways. 
+
+1. new directories
+	- debian
+
+2. modified directories
+	- etc
+
+3. modified files
+	- Makefile
+
+## Requirements
+
+```sh
+sudo apt-get install git gnupg-agent build-essential libsystemd-dev debhelper devscripts
+```
+
+and
+
+```
+Go (>=1.8.3)
+```
+
+and
+
+a valid __journalbeat.yml__**
+
+and
+
+Goes without saying `GOROOT`, `GOPATH` environment variables and have both be callable by sudo.
+
+and
+
+a properly signed and configured gpg key.
+
+## How to use this ?
+
+```sh
+# you need gpg-agent to sign you deb file
+# import a valid gpg public, private keys of user define in debian/control
+eval $(gpg-agent --daemon)
+gpg --import public.key
+gpg --import -allow-secret-key-import private.key
+# other stuff
+git clone <URL>/journalbeat
+cd journalbeat
+debuild
+```
+
+## How to configure journalbeat ?
+
+In order of preference
+
+- Creates a symlink of you config file to __/etc/journalbeat/journalbeat.yml__
+
+OR
+
+- In etc/journalbeat.default file, modifies JOURNAL_BEAT_CONFIG_FILE_PATH
+
+OR
+
+- Modifies __etc/journalbeat.service__
+
+OR
+
+- Modifies __etc/journalbeat.yml__ file
+
+## How to run the beat as a systemd service ?
+
+```sh
+dpkg -i <journalbeat_name>.deb
+sudo systemctl enable journalbeat.service
+sudo systemctl start journalbeat.service
+```
+
+## How to update upstream ?
+
+```sh
+git remote add upstream https://github.com/mheese/journalbeat
+git pull upstream
+```
+
+You will most definitely have merge conflicts in [.gitignore, etc/, Makefile]. But it is expected.
+
+KEEP:
+- Makefile
+- etc/journalbeat.default
+- etc/journalbeat.service
+- .gitignore
+
+It is unlikely the debian/ directory will conflict with any upstream changes.
+
+## How to remove this ?
+
+```sh
+sudo apt-get purge journalbeat -y
+rm -rf /usr/local/journalbeat
+```
+
+## Do I need Go to run this ?
+
+No
+
+## How this works ?
+
+### Makefile
+
+The _Makefile_** is consist of 2 parts.
+
+The first part is mostly internal, used for building purposes.
+While the second part is used almost exclusively by the debian packaging engine `dh binary` or `debuild` depends on your preference.
+
+__Makefile Internal__
+
+A modified copy of cloudflare's hellogopher/Makefile.
+
+The Makefile is basically a packaging toolkit that downloads all third party dependencies into a .GOPATH directory locally. 
+
+After all dependencies is packaged in .GOPATH, the Makefile will then execute `go install`, which compile the actual executable binary in a newly created directory call `bin` locally.
+
+__Makefile Debian__
+
+this section is used by debuild.
+
+Words from debian god or when you want to know more. (https://www.debian.org/doc/manuals/maint-guide/)
+
+`debuild` is basically a command and control tool that used to invoke a collection of dh_* commands. It is in all those sequence of dh_* commands that our Makefile will be invoked.
+
+[Example] ~ this calls make build in our Makefile
+`debuild dh_auto_build` == `make build`
+
+The sequence of commands and how debuild behaves are dictated by `debian/rules` in it you will see what are being run and what are being ignored. 
+
+`dh $@` basically means that we are telling debuild to run all dh_* commands.
+
+### debian directory
+
+The __debian__** directory is use by the debian packaging tool `debuild` and the likes to store state and configuration files.
+
+__debian/rules__ is where you configures how debuild behaves.
+
+__debian/install__ is where you configures dpkg where you want to install dependent files.
+
+__debian/control__ is the README.md equivalence for dpkg
+
+
+### Remark
+
+look through `debian/rules`, `Makefiles`, `debian/install`, `etc/journalbeat.service`, and `etc/journalbeat.default` should give you enough information to know how this works
+
+__.GOPATH__**
+
+It is important for GOPATH to be moved to the debian target directory. If not, the compiled `journalbeat` will throw an exception and fail.
+
+---
+
+
 [![Build Status](https://travis-ci.org/mheese/journalbeat.svg?branch=master)](https://travis-ci.org/mheese/journalbeat)
 
 # Journalbeat
