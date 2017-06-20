@@ -15,6 +15,7 @@ all:
 
 setup_beat:
 	$Q make clean
+	$Q make clean_hellogopher
 	$Q make setup_hellogopher
 	$Q make build_hellogopher
 
@@ -26,6 +27,9 @@ clean:
 	$Q rm -f .DS_STORE
 	$Q rm -rf ${CWD}/bin/data
 	$Q rm -rf ${CWD}/bin/logs
+	$Q rm -rf vendor/github.com/wadey
+	$Q rm -rf vendor/golang.org/x/tools
+	$Q rm -f vendor/manifest
 	$Q make clean_hellogopher
 
 
