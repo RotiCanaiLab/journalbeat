@@ -31,6 +31,10 @@ and
 
 Goes without saying `GOROOT`, `GOPATH` environment variables and have both be callable by sudo.
 
+and
+
+a properly signed and configured gpg key.
+
 ## How to use this ?
 
 ```sh
