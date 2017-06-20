@@ -25,8 +25,7 @@ build:
 
 clean:
 	$Q rm -f .DS_STORE
-	$Q rm -rf ${CWD}/bin/data
-	$Q rm -rf ${CWD}/bin/logs
+	$Q rm -rf ${CWD}/bin
 	$Q rm -rf vendor/github.com/wadey
 	$Q rm -rf vendor/golang.org/x/tools
 	$Q rm -f vendor/manifest
@@ -111,10 +110,6 @@ format_hellogopher: bin/goimports .GOPATH/.ok
 
 .PHONY: setup_hellogopher
 setup_hellogopher: clean_hellogopher .GOPATH/.ok
-	@if ! grep "/.GOPATH" .gitignore > /dev/null 2>&1; then \
-		echo "/.GOPATH" >> .gitignore; \
-		echo "/bin" >> .gitignore; \
-	fi
 	go get -u github.com/FiloSottile/gvt
 	- ./bin/gvt fetch golang.org/x/tools/cmd/goimports
 	- ./bin/gvt fetch github.com/wadey/gocovmerge

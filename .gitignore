@@ -29,3 +29,5 @@ bin/
 build/
 /Dockerfile
 /journalbeat.yml
+/.GOPATH
+/bin
