@@ -8,18 +8,19 @@
 CWD := $(shell pwd)
 
 .PHONY: all
-all: make build
+all:
+	$Q make build
 
 .PHONY: clean build setup_beat
 
 setup_beat:
 	$Q make clean
+	$Q make setup_hellogopher
 	$Q make build_hellogopher
 
 build:
 	$Q make setup_beat
 	$Q chmod go-w etc/journalbeat.yml
-	$Q make clean
 
 clean:
 	$Q rm -f .DS_STORE

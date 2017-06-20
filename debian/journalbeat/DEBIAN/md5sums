@@ -1,9 +1,0 @@
-5c969c520de466849d2984b24fbd8ee4  opt/journalbeat/LICENSE
-f8dea71bb4c98a8c4a6cea5a31252b54  opt/journalbeat/README.md
-aaccb69d8230041ed7e79a686e25a18c  opt/journalbeat/bin/journalbeat
-bc7d237e1c946942f0bac156f8b05524  opt/journalbeat/journalbeat.environment
-124db1ffbbd495620719988d9f244c0a  opt/journalbeat/journalbeat.service
-6375ba7e1a4df4cbf97612dbaa4d63c1  opt/journalbeat/journalbeat.yml
-f7c95830de2ed8394a9dc2ab95628520  usr/share/doc/journalbeat/README.Debian
-37d2edb8cd4defd53fd5d61dbc65fdb6  usr/share/doc/journalbeat/changelog.gz
-7791e49bbee2db5f31125b510e32ff9f  usr/share/doc/journalbeat/copyright
