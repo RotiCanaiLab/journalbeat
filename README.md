@@ -99,6 +99,10 @@ sudo apt-get purge journalbeat -y
 rm -rf /usr/local/journalbeat
 ```
 
+## Do I need Go to run this ?
+
+No
+
 ## How this works ?
 
 ### Makefile
