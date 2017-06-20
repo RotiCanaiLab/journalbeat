@@ -1,6 +1,3 @@
 etc/journalbeat.default /etc
 etc/journalbeat.service /etc/systemd/system
-etc/journalbeat* /usr/local/journalbeat
-bin/journalbeat /usr/local/journalbeat/bin
-README.md /usr/local/journalbeat
-.GOPATH /usr/local/journalbeat
+* /usr/local/journalbeat
