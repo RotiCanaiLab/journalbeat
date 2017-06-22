@@ -14,7 +14,7 @@ This fork differs from the original upstream in three different ways.
 ## Requirements
 
 ```sh
-sudo apt-get install git gnupg-agent build-essential libsystemd-dev
+sudo apt-get install git gnupg-agent build-essential libsystemd-dev debhelper devscripts
 ```
 
 and
