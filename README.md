@@ -38,15 +38,9 @@ a properly signed and configured gpg key.
 ## How to use this ?
 
 ```sh
-# you need gpg-agent to sign you deb file
-# import a valid gpg public, private keys of user define in debian/control
-eval $(gpg-agent --daemon)
-gpg --import public.key
-gpg --import -allow-secret-key-import private.key
-# other stuff
 git clone <URL>/journalbeat
 cd journalbeat
-debuild
+debuild -i -us -uc --no-lintian
 ```
 
 ## How to configure journalbeat ?
@@ -107,9 +101,11 @@ No
 
 ### Makefile
 
-The _Makefile_** is consist of 2 parts.
+The _Makefile_** is consist of 3 parts.
 
-The first part is mostly internal, used for building purposes.
+The first part is basically the original journalbeat's Makefile that build a docker image.
+
+The second part is mostly internal, used for building purposes.
 While the second part is used almost exclusively by the debian packaging engine `dh binary` or `debuild` depends on your preference.
 
 __Makefile Internal__
