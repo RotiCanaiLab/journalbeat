@@ -30,10 +30,10 @@ override_dh_usrlocal:
 
 override_dh_testdir:
 
-dh_auto_install:
+override_dh_auto_install:
 
-dh_install:
+override_dh_install:
 
-dh_strip:
+override_dh_strip:
 
-dpkg-gencontrol:
+override_dpkg-gencontrol:
