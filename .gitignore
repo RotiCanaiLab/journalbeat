@@ -37,3 +37,9 @@ build/
 vendor/github.com/wadey/
 vendor/golang.org/x/tools/
 vendor/manifest
+
+# debian stuff
+debian/debhelper-build-stamp
+debian/journalbeat.debhelper.log
+debian/journalbeat.substvars
+debian/files
