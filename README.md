@@ -4,6 +4,7 @@ This fork differs from the original upstream in three different ways.
 
 1. new directories
 	- debian
+	- artifact ( basically dumped previous artifacts here. I know... )
 
 2. modified directories
 	- etc
@@ -13,8 +14,10 @@ This fork differs from the original upstream in three different ways.
 
 ## Requirements
 
+Platform: __ubuntu/xenial64__
+
 ```sh
-sudo apt-get install git gnupg-agent build-essential libsystemd-dev debhelper devscripts
+sudo apt-get install git build-essential libsystemd-dev debhelper devscripts
 ```
 
 and
@@ -85,6 +88,30 @@ KEEP:
 - .gitignore
 
 It is unlikely the debian/ directory will conflict with any upstream changes.
+
+## Where is my deb file ?
+
+once you build the deb file, try doing this from the working directory...
+
+```sh
+cd ..
+```
+
+or
+
+```sh
+cd <path_to_journalbeat_repo>/..
+```
+
+## Where is my rpm file ?
+
+debuild is a debian packager. Got it ?
+Therefore to get a rpm file, you need to convert it using tools like alien
+
+```sh
+sudo apt-get alien
+alien -r <>.deb
+```
 
 ## How to remove this ?
 
