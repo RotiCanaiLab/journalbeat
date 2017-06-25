@@ -159,7 +159,7 @@ output.elasticsearch:
 
   # Optional index name. The default is "beatname" plus date
   # and generates [beatname-]YYYY.MM.DD keys.
-  #index: "beatname-%{+yyyy.MM.dd}"
+  index: "beatname-%{+yyyy.MM.dd}"
 
   # Optional ingest node pipeline. By default no pipeline will be used.
   #pipeline: ""
