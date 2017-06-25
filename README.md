@@ -40,7 +40,7 @@ a properly signed and configured gpg key.
 ```sh
 git clone <URL>/journalbeat
 cd journalbeat
-debuild -i -us -uc --no-lintian
+debuild --no-lintian -i -us -uc
 ```
 
 ## How to configure journalbeat ?
@@ -93,7 +93,7 @@ sudo apt-get purge journalbeat -y
 rm -rf /usr/local/journalbeat
 ```
 
-## Do I need Go to run this ?
+## Do I need Go to run the journalbeat service ?
 
 No
 
