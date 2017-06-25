@@ -16,9 +16,13 @@
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 
-%:
-	dh $@ 
+# %:
+# 	dh $@
 
+%:
+	dh clean
+	dh build
+	fakeroot dh binary
 
 # dh_make generated override targets
 # This is example for Cmake (See https://bugs.debian.org/641051 )
@@ -29,3 +33,13 @@
 # since this is where deb will install journalbeat
 # and we handle the export in debian/install
 override_dh_usrlocal:
+
+override_dh_testdir:
+
+dh_auto_install:
+
+dh_install:
+
+dh_strip:
+
+dpkg-gencontrol:
